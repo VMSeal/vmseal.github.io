@@ -1,3 +1,6 @@
+title: VMSeal
+description: Security-focused virtualisation app for macOS.
+
 remote-theme: pages-themes/cayman@v0.2.0
 plugins:
     - jekyll-remote-theme

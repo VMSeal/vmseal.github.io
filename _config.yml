@@ -2,3 +2,7 @@ title: VMSeal
 description: Security-focused virtualisation app for macOS.
 
 theme: jekyll-theme-cayman
+
+github:
+    repository_name: "VMSeal's app"
+    repository_url: "https://github.com/VMSeal/app"

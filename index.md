@@ -23,7 +23,7 @@ Well, firstly, it utilises macOS' *App Sandbox*, and requests nothing except for
 
 It also uses macOS' *Hardened Runtime*, enables *Hardware Memory Tagging* when supported, and uses several compiler options hardening it further.
 
-It is also, of course, shielded by macOS' hypervisor itself.
+The host is lastly, but not the least, protected by the boundary macOS' hypervisor imposes. 
 
 These safeguards ensure that the boundary between the VM and the host are as shielded as possible.
 

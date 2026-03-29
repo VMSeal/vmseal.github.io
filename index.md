@@ -30,4 +30,4 @@ These safeguards ensure that the boundary between the VM and the host are as shi
 ## About
 
 The app is developed by [Axel Karlsson](https://github.com/0xdefoliate), with support by [Håkan Karlsson](https://github.com/0xhakankarlsson).  
-Please consider contributing to the app!
+Please consider [contributing to the app](https://github.com/VMSeal/app)!

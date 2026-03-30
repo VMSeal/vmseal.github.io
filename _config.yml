@@ -4,5 +4,6 @@ description: Security-focused virtualisation app for macOS.
 theme: jekyll-theme-cayman
 
 github:
+    is_project_page: true
     repository_name: "VMSeal's app"
     repository_url: "https://github.com/VMSeal/app"

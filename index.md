@@ -3,31 +3,67 @@
 The virtualisation app *for* macOS, done natively and securely.  
 Currently in early alpha.
 
-## Who's it for?
+**IMPORTANT:** there are no downloads available right now!  
+If you want to use it, you currently have to build it yourself with Xcode.
 
-This app is for people who:
-* have a secured environment for e.g. developing
-* wants to test software on GNU/Linux
-* etc...
+## Features
+* Security is built-in, not bolted-on.
+* Natively crafted.
+* "AI"-free -- no LLMs are involved.
 
-## Native
-
-The app is built on top of native macOS foundations, such as *Swift*, *SwiftUI*, and Apple's own *Virtualization.framework*.
-
-No Electron, no non-native hypervisors like QEMU, nothing like that.
+See more about security below.
 
 ## Security
 
-How does VMSeal accomplish higher security?  
-Well, firstly, it utilises macOS' *App Sandbox*, and requests nothing except for outgoing network connections, used for fetching ISOs.  
+In VMSeal, security is a core tenet, so read more about our approach below.
 
-It also uses macOS' *Hardened Runtime*, enables *Hardware Memory Tagging* when supported, and uses several compiler options hardening it further.
+### Threat Model
 
-The host is lastly, but not the least, protected by the boundary macOS' hypervisor imposes. 
+The app treats its guests as if they are untrusted, but not necessarily compromised.
 
-These safeguards ensure that the boundary between the VM and the host are as shielded as possible.
+### Sandboxing
+
+Utilisation of macOS' *App Sandbox* is its primary line of defence, which allows the operating system to enforce the security of VMSeal.  
+Nothing is requested from outside the sandbox, except for outgoing connections, for downloading VMs.
+
+Besides the App Sandbox, VMSeal utilises the *Hardened Runtime*, and, furthermore, the opt-in *Hardware Memory Tagging* build-feature.
+
+The biggest layer, of course, is Apple's *Virtualization.framework*, which does the bulk of work.
+
+### Source Code
+
+Inside the source code, Swift is used for >98% of the code, and the remaining percentage in C.  
+There are also no dependencies besides official Apple libraries.
+
+This is due to the targeted nature of using dependencies, and it's best to keep it to the absolute minimum,  
+which keeps the amount of trusted parties down **significantly**.
+
+The source code itself is encouraged to be audited, and effort gets put into making it maintainable, thus more easily auditable.
+
+### The User
+
+The user is considered a threat, in the way that they may make mistakes.  
+
+So, for example, to prevent downloading tampered ISOs, VMSeal offers supported guest OSes for both Intel and Silicon Macs. 
+during setup of a new VM.
+
+The internal database of OSes are intended to offer as an auditable source of truth.
+
+## Privacy
+
+This app is privacy-friendly; it does not collect data and never "phones home".  
+The only situation where privacy-concerns are warranted are when downloading ISOs from the internet.
+
+Why? Because the mirrors or download pages *can, but don't necessarily,* collect information about the connection.
 
 ## About
 
 The app is developed by [Axel Karlsson](https://github.com/0xdefoliate), with support by [Håkan Karlsson](https://github.com/0xhakankarlsson).  
-Please consider [contributing to the app](https://github.com/VMSeal/app)!
+Please consider contributing to the app!
+
+### Trademark
+
+VMSeal is an unregistered trademark of Axel H. Karlsson.  
+
+You may not use the name "VMSeal" when forking it or making unofficial builds.  
+Thank you.

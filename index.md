@@ -15,7 +15,7 @@ See more about security below.
 
 ## Security
 
-In VMSeal, security is a core tenet, so read more about our approach below.
+In VMSeal, security is a core tenet, so read more about how the different aspects contributes to the whole security model.
 
 ### Threat Model
 
@@ -23,43 +23,45 @@ The app treats its guests as if they are untrusted, but not necessarily compromi
 
 ### Sandboxing
 
-Utilisation of macOS' *App Sandbox* is its primary line of defence, which allows the operating system to enforce the security of VMSeal.  
-Nothing is requested from outside the sandbox, except for outgoing connections, for downloading VMs.
+Sandboxing is vital and is thus utilised via macOS' *App Sandbox*.  
+Nothing is requested from inside the sandbox, except for outgoing connections, used for downloading VM images.  
 
-Besides the App Sandbox, VMSeal utilises the *Hardened Runtime*, and, furthermore, the opt-in *Hardware Memory Tagging* build-feature.
+Besides the App Sandbox, VMSeal utilises the *Hardened Runtime*, and, furthermore, the opt-in *Hardware Memory Tagging* build-feature.  
 
-The biggest layer, of course, is Apple's *Virtualization.framework*, which does the bulk of work.
+The biggest layer, of course, is Apple's *Virtualization.framework*, which does the bulk of work and is the primary line of defence from untrusted VMs.
 
 ### Source Code
 
-Inside the source code, Swift is used for >98% of the code, and the remaining percentage in C.  
+Swift is the primary and preferred language inside the source code,  
+with a *small* percentage in C, which is **not** used for critical tasks.
+
 There are also no dependencies besides official Apple libraries.
 
-This is due to the targeted nature of using dependencies, and it's best to keep it to the absolute minimum,  
-which keeps the amount of trusted parties down **significantly**.
+This is due to supply-chain risks of using third-party dependencies, so it's best to keep them down to the absolute minimum,  
+which also redices the amount of trusted parties **significantly**.
 
-The source code itself is encouraged to be audited, and effort gets put into making it maintainable, thus more easily auditable.
+The source code itself encourages audits, and effort gets put into making it maintainable, thus more easily auditable.
 
 ### The User
 
 The user is considered a threat, in the way that they may make mistakes.  
 
-So, for example, to prevent downloading tampered ISOs, VMSeal offers supported guest OSes for both Intel and Silicon Macs. 
-during setup of a new VM.
+So, for example, to mititgate the risk of downloading tampered ISOs,  
+VMSeal offers downloads for supported guest OSes inside the app during setup of a new VM.
 
-The internal database of OSes are intended to offer as an auditable source of truth.
+The internal database of OSes are intended to act as an auditable source of truth.
 
 ## Privacy
 
-This app is privacy-friendly; it does not collect data and never "phones home".  
-The only situation where privacy-concerns are warranted are when downloading ISOs from the internet.
+VMSeal is privacy-friendly; it does not collect data and never "phones home".  
+The only situation where privacy-concerns are warranted is when downloading ISOs.  
 
-Why? Because the mirrors or download pages *can, but don't necessarily,* collect information about the connection.
+Why? Because the mirrors or download pages *can, but don't necessarily,* collect information about the download process.
 
 ## About
 
-The app is developed by [Axel Karlsson](https://github.com/0xdefoliate), with support by [Håkan Karlsson](https://github.com/0xhakankarlsson).  
-Please consider contributing to the app!
+VMSeal is developed by [Axel Karlsson](https://github.com/0xdefoliate), with support by [Håkan Karlsson](https://github.com/0xhakankarlsson).  
+Please consider contributing to the app, it really helps!
 
 ### Trademark
 

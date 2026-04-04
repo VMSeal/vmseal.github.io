@@ -38,7 +38,7 @@ with a *small* percentage in C, which is **not** used for critical tasks.
 There are also no dependencies besides official Apple libraries.
 
 This is due to supply-chain risks of using third-party dependencies, so it's best to keep them down to the absolute minimum,  
-which also redices the amount of trusted parties **significantly**.
+which also reduces the amount of trusted parties **significantly**.
 
 The source code itself encourages audits, and effort gets put into making it maintainable, thus more easily auditable.
 

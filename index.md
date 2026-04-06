@@ -65,7 +65,7 @@ Please consider contributing to the app, it really helps!
 
 ### Trademark
 
-The word "VMSeal" and associated branding are unregistered trademarks of Axel H. Karlsson.  
+The word "VMSeal" and associated branding are common-law trademarks of Axel H. Karlsson.  
 
 You may not use the name "VMSeal" when forking it or distributing unofficial builds.  
 Thank you.

@@ -15,7 +15,7 @@ See more about security below.
 
 ## Security
 
-In VMSeal, security is a core tenet, so read more about how the different aspects contributes to the whole security model.
+In VMSeal, security is a core tenet, so read more about how the different aspects contributes to the whole security model below.
 
 ### Threat Model
 

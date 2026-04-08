@@ -19,7 +19,8 @@ In VMSeal, security is a core tenet, so read more about how the different aspect
 
 ### Threat Model
 
-The app treats its guests as if they are untrusted, but not necessarily compromised.
+The app treats its guests as if they are untrusted, but not necessarily compromised.  
+The host, however, is assumed to be fully trusted.
 
 ### Sandboxing
 

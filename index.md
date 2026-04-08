@@ -1,7 +1,7 @@
 # VMSeal
 
 The virtualisation app *for* macOS, done natively and securely.  
-Currently in early alpha.
+Currently in alpha.
 
 **IMPORTANT:** there are no downloads available right now!  
 If you want to use it, you currently have to build it yourself with Xcode.

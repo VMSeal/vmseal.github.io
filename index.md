@@ -48,9 +48,12 @@ The source code itself encourages audits, and effort gets put into making it mai
 The user is considered a threat, in the way that they may make mistakes.  
 
 So, for example, to mitigate the risk of downloading tampered ISOs,  
-VMSeal offers downloads for supported guest OSes inside the app during setup of a new VM.
+VMSeal offers downloads for supported guest OSes inside the app during setup of a new VM *only*.
 
-The internal database of OSes are intended to act as an auditable source of truth.
+This internal database of OSes are intended to act as an auditable source of truth.
+
+Currently, only SHA256 digests are used for verifying if the downloaded ISO is corrupt,  
+but in the future, verification with PGP keys will be utilised.
 
 ## Privacy
 

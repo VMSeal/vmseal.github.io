@@ -26,7 +26,7 @@ The app treats its guests as if they are untrusted, but not necessarily compromi
 Sandboxing is vital and is thus utilised via macOS' *App Sandbox*.  
 Nothing is requested from inside the sandbox, except for outgoing connections, used for downloading VM images.  
 
-Besides the App Sandbox, VMSeal utilises the *Hardened Runtime*, and, furthermore, the opt-in *Hardware Memory Tagging* build-feature.  
+Besides the *App Sandbox*, VMSeal utilises the *Hardened Runtime*, and, furthermore, the opt-in *Hardware Memory Tagging* build-feature.  
 
 The biggest layer, of course, is Apple's *Virtualization.framework*, which does the bulk of work and is the primary line of defence from untrusted VMs.
 
@@ -38,7 +38,7 @@ with a *small* percentage in C, which is **not** used for critical tasks.
 There are also no dependencies besides official Apple libraries.
 
 This is due to supply-chain risks of using third-party dependencies, so it's best to keep them down to the absolute minimum,  
-which also reduces the amount of trusted parties **significantly**.
+which also reduces the amount of parties that need to be trusted **significantly**.
 
 The source code itself encourages audits, and effort gets put into making it maintainable, thus more easily auditable.
 

@@ -46,7 +46,7 @@ The source code itself encourages audits, and effort gets put into making it mai
 
 The user is considered a threat, in the way that they may make mistakes.  
 
-So, for example, to mititgate the risk of downloading tampered ISOs,  
+So, for example, to mitigate the risk of downloading tampered ISOs,  
 VMSeal offers downloads for supported guest OSes inside the app during setup of a new VM.
 
 The internal database of OSes are intended to act as an auditable source of truth.

@@ -52,8 +52,9 @@ VMSeal offers downloads for supported guest OSes inside the app during setup of 
 
 This internal database of OSes are intended to act as an auditable source of truth.
 
-Currently, only SHA256 digests are used for verifying if the downloaded ISO is corrupt,  
-but in the future, verification with PGP keys will be utilised.
+Currently, only SHA256 digests are used for verifying if the downloaded ISO is corrupt.
+
+**NOTE:** Plans are being currently being made to instead always use a hardened ISO which installs Alpine Linux (or something else, but most likely Alpine), which aligns better with the goals of this project.
 
 ## Privacy
 

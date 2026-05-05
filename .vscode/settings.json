@@ -1,0 +1,5 @@
+{
+    // This must be disabled otherwise Code - OSS-based editors complain
+    // about the front matter in some SCSS files.
+    "scss.validate": false
+}

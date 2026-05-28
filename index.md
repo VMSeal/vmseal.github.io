@@ -22,14 +22,22 @@ In VMSeal, security is a core tenet, so read more about how the different aspect
 The app treats its guests as if they are untrusted, but not necessarily compromised.  
 The host, however, is assumed to be fully trusted.
 
+It is fundamentally impossible to trust the host due to the fact that *Virtualization.framework* is a [type-2 hypervisor](https://en.wikipedia.org/wiki/Hypervisor#Classification).
+
 ### Sandboxing
 
-Sandboxing is vital and is thus utilised via macOS' *App Sandbox*.  
+#### Frontend
+
+The front-end to the VM service is sandboxed via macOS' *App Sandbox*.  
 Nothing is requested from inside the sandbox, except for outgoing connections, used for downloading VM images.  
 
-Besides the *App Sandbox*, VMSeal utilises the *Hardened Runtime*, and, furthermore, the opt-in *Hardware Memory Tagging* build-feature.  
+Besides the *App Sandbox*, VMSeal's frontend utilises the *Hardened Runtime*, and, furthermore, the opt-in *Hardware Memory Tagging*  
+build-feature, along with other hardening build options.
 
-The biggest layer, of course, is Apple's *Virtualization.framework*, which does the bulk of work and is the primary line of defence from untrusted VMs.
+#### VM service
+
+The *Virtualization.framework* launches a dedicated VM service which is where the VM actually is contained inside.  
+This service shows up in **Activity Monitor** and *is* sandboxed.
 
 ### Source Code
 

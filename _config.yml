@@ -1,2 +1,5 @@
-title: VMSeal
-description: Security-focused virtualisation app for macOS.
+site:
+    title: VMSeal
+    description: Security-focused virtualisation app for macOS.
+
+source: ./site

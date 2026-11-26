@@ -3,14 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{{ site.site.description }}">
         <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
         <link rel="stylesheet" href="/assets/css/style.css" />
-        <title>{{ site.title }}</title>
+        <script src="/assets/js/index.docs.js" type="module"></script>
+        <title>{{ site.site.title }}</title>
     </head>
     <body>
-        <nav class="navbar">
-            <a href="/">
-                <img src="/assets/branding/Branding.png" alt="VMSeal Logo" />
+        <nav class="navbar" id="navbar">
+            <a class="brand" href="/">
+                <img src="/assets/branding/Branding.png" alt="VMSeal" />
             </a>
         </nav>
 

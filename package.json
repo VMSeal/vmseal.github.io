@@ -1,0 +1,19 @@
+{
+    "name": "vmseal.github.io",
+    "private": "true",
+    "description": "VMSeal's webpage.",
+    "bugs": {
+        "url": "https://github.com/VMSeal/vmseal.github.io/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/VMSeal/vmseal.github.io.git"
+    },
+    "license": "MIT AND BSD-3-Clause",
+    "author": "Axel H. Karlsson",
+    "type": "module",
+    "scripts": {
+        "ci": "bundle install",
+        "clean": "rm -rf _site/*"
+    }
+}

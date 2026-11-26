@@ -1,0 +1,137 @@
+:root {
+    --navbar-height: 100px;
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    --bg: white;
+    --fg: #202020;
+    --border-colour: black;
+    --light-border-colour: #9f9f9f;
+    --link-colour: #2b55fa;
+    --action-primary-colour: #007bff;
+    --action-secondary-colour: #303030;
+}
+
+body {
+    margin: 0;
+    padding: 0
+}
+
+nav.navbar {
+    background-color: var(--bg);
+    z-index: 9999;
+
+    position: fixed;
+    top: 0;
+
+    width: 100dvw;
+    height: var(--navbar-height);
+
+    box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+
+    display: flex;
+
+    padding: 0;
+    margin: 0;
+
+    gap: 32px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 545px) {
+        justify-content: center;
+        .brand.img {
+            padding: 0;
+        }
+    }
+
+    .brand img {
+        padding: 16px;
+
+        -webkit-user-drag: none;
+        width: 300px;
+
+        @media (max-width: 400px) {
+            width: 250px
+        }
+    }
+}
+
+#content {
+    --margin-top: calc(var(--navbar-height) + 32px);
+
+    margin: var(--margin-top) 25dvw 0;
+
+    @media (max-width: 1130px) {
+        margin: var(--margin-top) 15dvw 0
+    }
+
+    @media (max-width: 750px) {
+        margin: var(--margin-top) 5dvw 0
+    }
+
+    @media (max-width: 470px) {
+        margin: var(--margin-top) 6px 0
+    }
+}
+
+button.chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    background: none;
+
+    cursor: pointer;
+
+    &.chevron-down {
+        transition-property: transform;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+        transform: rotate(90deg);
+    }
+}
+
+section {
+    border-left: 1px dashed var(--light-border-colour);
+    margin-left: 16px;
+    padding-left: 16px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    &.hidden > *:not(h1, h2, h3, h4, h5, h6) {
+        display: none;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 8px 0;
+
+    &.with-icon {
+        svg {
+            /* chevron */
+            transform: scale(1.25);
+        }
+
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    &.headline {
+        font-weight: bold;
+        @media (max-width: 545px) {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+a {
+    color: var(--link-colour);
+    text-decoration: none;
+}

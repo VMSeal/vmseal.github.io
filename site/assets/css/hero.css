@@ -1,0 +1,45 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin-bottom: 64px;
+
+    .screenshot {
+        width: 100%;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: end;
+        gap: 16px;
+
+        @media (max-width: 750px) {
+            justify-content: center;
+        }
+    }
+
+    .action {
+        background-color: var(--bg);
+        width: max-content;
+        height: max-content;
+        padding: 16px;
+        border: 1px solid var(--border-colour);
+        border-radius: 8px;
+        background: var(--bg);
+        color: var(--fg);
+        font-weight: bold;
+    }
+
+    .action.primary {
+        background-color: var(--action-primary-colour);
+        border-color: var(--action-primary-colour);
+        color: white;
+    }
+
+    .action.secondary {
+        background-color: var(--action-secondary-colour);
+        border-color: var(--action-secondary-colour);
+        color: #f0f0f0;
+    }
+}

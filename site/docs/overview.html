@@ -1,0 +1,226 @@
+---
+layout: docs
+---
+
+<h1>Overview</h1>
+<p>
+    <b>Welcome!</b> <br/>
+    <br/>
+
+    This page aims to provide an overview about everything you need to know about VMSeal.
+</p>
+
+<hr/>
+
+<section id="features">
+    <h2 class="with-icon">
+        {% include icon.html icon="features" %}
+        Features
+    </h2>
+
+    <ul>
+        <li>Security is built-in, not bolted-on.</li>
+        <li>Native-first -- written in Swift.</li>
+        <li>Handcrafted -- no LLMs are involved.</li>
+    </ul>
+
+    <p>
+        See more about security below.
+    </p>
+</section>
+
+<section id="installation">
+    <h2 class="with-icon">
+        {% include icon.html icon="installation" %}
+        Installation
+    </h2>
+
+    <p>
+        There are currently no downloads available, and you thus have to build it yourself. <br/>
+        Once the app is notarised, binaries will be distributed. <br/>
+        <br/>
+        Please note that the app only supports ARM-based Macs. <br/>
+        Intel Macs may get limited supported if there is demand.
+    </p>
+</section>
+
+<section id="security">
+    <h2 class="with-icon">
+        {% include icon.html icon="security" %}
+        Security
+    </h2>
+
+    <p>
+        In VMSeal, security is a core tenet, so read more about how the different aspects contributes to the whole security model below.
+    </p>
+
+    <section id="security-threat-model">
+        <h3 class="with-icon">
+            {% include icon.html icon="threat-model" %}
+            Threat Model
+        </h3>
+
+        <p>
+            The app treats its guests as if they are untrusted, but not necessarily compromised. <br/>
+            The host, however, is assumed to be fully trusted. <br/>
+            <br/>
+            It is fundamentally impossible to distrust the host due to the fact that VMSeal is a
+            <a href="https://en.wikipedia.org/wiki/Hypervisor#Classification">type-2 hypervisor</a>.
+        </p>
+    </section>
+
+    <section id="security-sandboxing">
+        <h3 class="with-icon">
+            {% include icon.html icon="sandboxing" %}
+            Sandboxing
+        </h3>
+
+        <p>
+            The app has two layers which are treated differently in this regard;
+            the <i>VM service</i> (provided by the system), and the "frontend" (i.e. VMSeal).
+        </p>
+
+        <section id="security-sandboxing-frontend">
+            <h4 class="with-icon">
+                {% include icon.html icon="frontend" %}
+                Frontend
+            </h4>
+
+            <p>
+                The front-end to the VM service is sandboxed via macOS' <i>App Sandbox</i>. <br/>
+                Nothing is requested from inside the sandbox, except for outgoing connections, which is only used for downloading VM images. <br/>
+                <br/>
+                Besides the <i>App Sandbox</i>, VMSeal's frontend utilises several of the following hardening features:
+            </p>
+
+            <ul>
+                <li>
+                    <i>Hardened Runtime</i>
+                </li>
+
+                <li>
+                    <i><abbr title="Memory Tagging Extension(s)">MTE</abbr></i> (only applicable on select M-series chips)
+                </li>
+
+                <li>
+                    <i><abbr title="Pointer Authentication Codes">PAC</abbr></i>
+                </li>
+
+                <li>
+                    and more...
+                </li>
+            </ul>
+        </section>
+
+        <section id="security-sandboxing-vm-service">
+            <h4 class="with-icon">
+                {% include icon.html icon="vm-service" %}
+                VM service
+            </h4>
+
+            <p>
+                The <i>Virtualization.framework</i> launches a dedicated VM service which is
+                <a href="https://developer.apple.com/forums/thread/830156#890584022:~:text=Outside%20of%20the%20Virtualization.framework%20API%2C%20you%20will%20see%20a%20process%20named%20%22com.apple.Virtualization.VirtualMachine%22%20running%20on%20your%20system%2C%20this%20is%20the%20process%20responsible%20for%20running%20the%20virtual%20machine.">where the VM actually is contained inside</a>.
+                <br/>
+                This service shows up in <b>Activity Monitor</b> and <i>is</i> sandboxed.
+            </p>
+        </section>
+    </section>
+
+    <section id="security-source-code">
+        <h3 class="with-icon">
+            {% include icon.html icon="source-code" %}
+            Source Code
+        </h3>
+
+        <p>
+            Swift is the primary and preferred language inside the source code. <br/>
+            Low-level languages like C are avoided. <br/>
+            <br/>
+            There are also no dependencies besides official Apple libraries. <br/>
+            <br/>
+            This is due to supply-chain risks inherent when relying on third-party dependencies, thus we don't trust any
+            parties besides Apple themselves.
+        </p>
+
+        <p>
+            The source code itself encourages audits, and effort gets put into making it maintainable, thus more easily auditable.
+        </p>
+    </section>
+
+    <section id="security-the-user">
+        <h3 class="with-icon">
+            {% include icon.html icon="the-user" %}
+            The User
+        </h3>
+
+        <p>
+            The user is considered a threat, in the way that they may make mistakes. <br/>
+            Hence, we don't really permit much customisation or similar. <br/>
+            <br/>
+            For example, the supported OS used and its bootable image is currently hardcoded into the source-code; <br/>
+            there is no way for the end-user to change it without forking it, and that is a feature, not a bug.
+        </p>
+    </section>
+
+    <section id="security-guest-os">
+        <h3 class="with-icon">
+            {% include icon.html icon="the-guest-os" %}
+            Guest OS
+        </h3>
+
+        <p>
+            As briefly mentioned in the previous section, VMSeal hardcodes the OS to be used into the source-code. <br/>
+            We use an in-house OS dubbed "VMSeal/OS" which is an Alpine-derived Linux distribution, which features a significantly hardened kernel. <br/>
+            <br/>
+            Tonnes of unnecessary drivers and other features are disabled by default to reduce attack surface. <br/>
+            Kernel hardening options disabled by the upstream are re-enabled here, like hardened memory initialisation, etc.
+        </p>
+    </section>
+</section>
+
+<section id="privacy">
+    <h2 class="with-icon">
+        {% include icon.html icon="privacy" %}
+        Privacy
+    </h2>
+
+    <p>
+        No data is collected by VMSeal whatsoever, and it will never do so either.
+    </p>
+</section>
+
+<section id="about">
+    <h2 class="with-icon">
+        {% include icon.html icon="about" %}
+        About
+    </h2>
+
+    <p>
+        VMSeal is currently developed entirely by <a href="https://github.com/0xdefoliate">Axel H. Karlsson</a>. <br/>
+        <br/>
+        If you enjoy the app, consider contributing, either with code, or bug-reports. <br/>
+        Even just a thank-you message or a star on GitHub is invaluable to me, and encourages me to further work on this. <br/>
+    </p>
+
+    <section id="Legal">
+        <h3 class="with-icon">
+            {% include icon.html icon="trademark" %}
+            Legal
+        </h3>
+
+        <ul>
+            <li>
+                <b>VMSeal</b> and its associated branding (e.g. logos) are common-law trademarks of Axel H. Karlsson.
+            </li>
+
+            <li>
+                <b>Linux&reg;</b> is a registered trademark of Linus Torvalds in the U.S. and other countries.
+            </li>
+
+            <li>
+                the <b>"Tux" logo</b> is owned by Larry Ewing.
+            </li>
+        </ul>
+    </section>
+</section>

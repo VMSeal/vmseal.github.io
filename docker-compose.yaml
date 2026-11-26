@@ -1,0 +1,11 @@
+services:
+    serve:
+      build:
+        dockerfile: Dockerfile
+      ports:
+        - "4000:4000"
+      volumes:
+        - .:/live
+      cap_drop:
+        - ALL
+      

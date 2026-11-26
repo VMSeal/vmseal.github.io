@@ -27,7 +27,7 @@ jobs:
         run: npm run ci
 
       - name: Build webpage
-        run: npm run build
+        run: bundle exec jekyll build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
